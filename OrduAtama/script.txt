@@ -1,0 +1,481 @@
+USE [master]
+GO
+
+/****** Object:  Database [OrduIhkDb]    Script Date: 6/18/2019 10:39:00 AM ******/
+CREATE DATABASE [OrduIhkDb]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'OrduIhkDb', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\DATA\OrduIhkDb.mdf' , SIZE = 3072KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+ LOG ON 
+( NAME = N'OrduIhkDb_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\DATA\OrduIhkDb_log.ldf' , SIZE = 1024KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+GO
+
+ALTER DATABASE [OrduIhkDb] SET COMPATIBILITY_LEVEL = 120
+GO
+
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [OrduIhkDb].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+
+ALTER DATABASE [OrduIhkDb] SET ANSI_NULL_DEFAULT OFF 
+GO
+
+ALTER DATABASE [OrduIhkDb] SET ANSI_NULLS OFF 
+GO
+
+ALTER DATABASE [OrduIhkDb] SET ANSI_PADDING OFF 
+GO
+
+ALTER DATABASE [OrduIhkDb] SET ANSI_WARNINGS OFF 
+GO
+
+ALTER DATABASE [OrduIhkDb] SET ARITHABORT OFF 
+GO
+
+ALTER DATABASE [OrduIhkDb] SET AUTO_CLOSE OFF 
+GO
+
+ALTER DATABASE [OrduIhkDb] SET AUTO_SHRINK OFF 
+GO
+
+ALTER DATABASE [OrduIhkDb] SET AUTO_UPDATE_STATISTICS ON 
+GO
+
+ALTER DATABASE [OrduIhkDb] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+
+ALTER DATABASE [OrduIhkDb] SET CURSOR_DEFAULT  GLOBAL 
+GO
+
+ALTER DATABASE [OrduIhkDb] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+
+ALTER DATABASE [OrduIhkDb] SET NUMERIC_ROUNDABORT OFF 
+GO
+
+ALTER DATABASE [OrduIhkDb] SET QUOTED_IDENTIFIER OFF 
+GO
+
+ALTER DATABASE [OrduIhkDb] SET RECURSIVE_TRIGGERS OFF 
+GO
+
+ALTER DATABASE [OrduIhkDb] SET  DISABLE_BROKER 
+GO
+
+ALTER DATABASE [OrduIhkDb] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+
+ALTER DATABASE [OrduIhkDb] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+
+ALTER DATABASE [OrduIhkDb] SET TRUSTWORTHY OFF 
+GO
+
+ALTER DATABASE [OrduIhkDb] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+
+ALTER DATABASE [OrduIhkDb] SET PARAMETERIZATION SIMPLE 
+GO
+
+ALTER DATABASE [OrduIhkDb] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+
+ALTER DATABASE [OrduIhkDb] SET HONOR_BROKER_PRIORITY OFF 
+GO
+
+ALTER DATABASE [OrduIhkDb] SET RECOVERY SIMPLE 
+GO
+
+ALTER DATABASE [OrduIhkDb] SET  MULTI_USER 
+GO
+
+ALTER DATABASE [OrduIhkDb] SET PAGE_VERIFY CHECKSUM  
+GO
+
+ALTER DATABASE [OrduIhkDb] SET DB_CHAINING OFF 
+GO
+
+ALTER DATABASE [OrduIhkDb] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+
+ALTER DATABASE [OrduIhkDb] SET TARGET_RECOVERY_TIME = 0 SECONDS 
+GO
+
+ALTER DATABASE [OrduIhkDb] SET DELAYED_DURABILITY = DISABLED 
+GO
+
+ALTER DATABASE [OrduIhkDb] SET  READ_WRITE 
+GO
+
+
+
+//////////////////////////////////////////
+
+USE [OrduIhkDb]
+GO
+
+/****** Object:  Table [dbo].[Gozlemci]    Script Date: 6/18/2019 10:39:32 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Gozlemci](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Ad] [nvarchar](50) NOT NULL,
+	[SoyAd] [nvarchar](50) NOT NULL,
+	[LisansNo] [int] NULL,
+	[KlasmanId] [int] NOT NULL,
+	[VizeDurumuId] [int] NOT NULL,
+	[VizeDurumu] [nvarchar](150) NULL,
+	[KlasmanAdi] [nvarchar](150) NULL,
+ CONSTRAINT [PK_Gozlemci] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[Gozlemci]  WITH CHECK ADD  CONSTRAINT [FK_Gozlemci_GozlemciKlasman] FOREIGN KEY([KlasmanId])
+REFERENCES [dbo].[GozlemciKlasman] ([Id])
+GO
+
+ALTER TABLE [dbo].[Gozlemci] CHECK CONSTRAINT [FK_Gozlemci_GozlemciKlasman]
+GO
+
+ALTER TABLE [dbo].[Gozlemci]  WITH CHECK ADD  CONSTRAINT [FK_Gozlemci_GozlemciVizeDurumu] FOREIGN KEY([VizeDurumuId])
+REFERENCES [dbo].[VizeDurumu] ([Id])
+GO
+
+ALTER TABLE [dbo].[Gozlemci] CHECK CONSTRAINT [FK_Gozlemci_GozlemciVizeDurumu]
+GO
+
+
+//////////////////////////
+
+
+USE [OrduIhkDb]
+GO
+
+/****** Object:  Table [dbo].[GozlemciKlasman]    Script Date: 6/18/2019 10:39:41 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[GozlemciKlasman](
+	[Id] [int] NOT NULL,
+	[Ad] [nvarchar](50) NOT NULL,
+	[Kod] [nvarchar](50) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+/////////////////////////
+
+USE [OrduIhkDb]
+GO
+
+/****** Object:  Table [dbo].[Hakem]    Script Date: 6/18/2019 10:39:45 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Hakem](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Ad] [nvarchar](50) NOT NULL,
+	[SoyAd] [nvarchar](50) NOT NULL,
+	[LisansNo] [int] NULL,
+	[KlasmanId] [int] NOT NULL,
+	[VizeDurumuId] [int] NOT NULL DEFAULT ((0)),
+	[KlasmanAdi] [nvarchar](150) NULL,
+	[VizeDurumu] [nvarchar](150) NULL,
+	[AdSoyAd] [nvarchar](300) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[Hakem]  WITH CHECK ADD  CONSTRAINT [fk_HakemKlasman] FOREIGN KEY([KlasmanId])
+REFERENCES [dbo].[Klasman] ([Id])
+GO
+
+ALTER TABLE [dbo].[Hakem] CHECK CONSTRAINT [fk_HakemKlasman]
+GO
+
+ALTER TABLE [dbo].[Hakem]  WITH CHECK ADD  CONSTRAINT [fk_HakemVizeDurumu] FOREIGN KEY([VizeDurumuId])
+REFERENCES [dbo].[VizeDurumu] ([Id])
+GO
+
+ALTER TABLE [dbo].[Hakem] CHECK CONSTRAINT [fk_HakemVizeDurumu]
+GO
+
+
+//////////////////////////
+
+USE [OrduIhkDb]
+GO
+
+/****** Object:  Table [dbo].[HakemCeza]    Script Date: 6/18/2019 10:39:50 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[HakemCeza](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[HakemId] [int] NOT NULL,
+	[CezaBaslangicTarihi] [datetime] NULL,
+	[CezaBitisTarihi] [datetime] NULL,
+	[CezaBaslangicHafta] [int] NULL,
+	[CezaBitisHafta] [int] NULL,
+	[HakemAd] [nvarchar](150) NULL,
+	[HakemSoyAd] [nvarchar](150) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[HakemCeza]  WITH CHECK ADD  CONSTRAINT [FK_HakemCezaHakem] FOREIGN KEY([HakemId])
+REFERENCES [dbo].[Hakem] ([Id])
+GO
+
+ALTER TABLE [dbo].[HakemCeza] CHECK CONSTRAINT [FK_HakemCezaHakem]
+GO
+
+
+////////////////////
+
+USE [OrduIhkDb]
+GO
+
+/****** Object:  Table [dbo].[MaçHaftasi]    Script Date: 6/18/2019 10:40:03 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[MaçHaftasi](
+	[MacHaftasi] [int] NULL
+) ON [PRIMARY]
+
+GO
+
+
+/////////////////
+
+USE [OrduIhkDb]
+GO
+
+/****** Object:  Table [dbo].[VizeDurumu]    Script Date: 6/18/2019 10:40:34 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[VizeDurumu](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Ad] [nvarchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+///////////////////////
+USE [OrduIhkDb]
+GO
+
+/****** Object:  Table [dbo].[Takimlar]    Script Date: 6/18/2019 10:40:31 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Takimlar](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Ad] [nvarchar](300) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+
+
+/////////////////////////////
+
+
+USE [OrduIhkDb]
+GO
+
+/****** Object:  Table [dbo].[TakimKategori]    Script Date: 6/18/2019 10:40:27 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[TakimKategori](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Ad] [nvarchar](300) NOT NULL,
+	[Kodu] [nvarchar](300) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+//////////////////////////
+
+USE [OrduIhkDb]
+GO
+
+/****** Object:  Table [dbo].[MacBilgisi]    Script Date: 6/18/2019 10:39:58 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[MacBilgisi](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[EvSahibiTakimId] [int] NOT NULL,
+	[DeplasmanTakimId] [int] NOT NULL,
+	[OrtaHakemId] [int] NOT NULL,
+	[BirinciYardimciHakemId] [int] NULL,
+	[IkinciYardimciHakemId] [int] NULL,
+	[KategoriId] [int] NOT NULL,
+	[Hafta] [int] NOT NULL,
+	[Tarih] [date] NULL,
+	[OrtaHakemAd] [nvarchar](150) NULL,
+	[BirinciYardimciHakemAd] [nvarchar](150) NULL,
+	[IkinciYardimciHakemAd] [nvarchar](150) NULL,
+	[DorduncuHakemId] [int] NULL,
+	[DorduncuHakemAd] [nvarchar](150) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[MacBilgisi]  WITH CHECK ADD  CONSTRAINT [FK_MacBilgisi_MacBilgisi] FOREIGN KEY([Id])
+REFERENCES [dbo].[MacBilgisi] ([Id])
+GO
+
+ALTER TABLE [dbo].[MacBilgisi] CHECK CONSTRAINT [FK_MacBilgisi_MacBilgisi]
+GO
+
+ALTER TABLE [dbo].[MacBilgisi]  WITH CHECK ADD  CONSTRAINT [fk_MacBilgisiHakem1] FOREIGN KEY([OrtaHakemId])
+REFERENCES [dbo].[Hakem] ([Id])
+GO
+
+ALTER TABLE [dbo].[MacBilgisi] CHECK CONSTRAINT [fk_MacBilgisiHakem1]
+GO
+
+ALTER TABLE [dbo].[MacBilgisi]  WITH CHECK ADD  CONSTRAINT [fk_MacBilgisiHakem2] FOREIGN KEY([BirinciYardimciHakemId])
+REFERENCES [dbo].[Hakem] ([Id])
+GO
+
+ALTER TABLE [dbo].[MacBilgisi] CHECK CONSTRAINT [fk_MacBilgisiHakem2]
+GO
+
+ALTER TABLE [dbo].[MacBilgisi]  WITH CHECK ADD  CONSTRAINT [fk_MacBilgisiHakem3] FOREIGN KEY([IkinciYardimciHakemId])
+REFERENCES [dbo].[Hakem] ([Id])
+GO
+
+ALTER TABLE [dbo].[MacBilgisi] CHECK CONSTRAINT [fk_MacBilgisiHakem3]
+GO
+
+ALTER TABLE [dbo].[MacBilgisi]  WITH CHECK ADD  CONSTRAINT [FK_MacBilgisiHakem4] FOREIGN KEY([DorduncuHakemId])
+REFERENCES [dbo].[Hakem] ([Id])
+GO
+
+ALTER TABLE [dbo].[MacBilgisi] CHECK CONSTRAINT [FK_MacBilgisiHakem4]
+GO
+
+ALTER TABLE [dbo].[MacBilgisi]  WITH CHECK ADD  CONSTRAINT [fk_MacBilgisiKategori] FOREIGN KEY([KategoriId])
+REFERENCES [dbo].[TakimKategori] ([Id])
+GO
+
+ALTER TABLE [dbo].[MacBilgisi] CHECK CONSTRAINT [fk_MacBilgisiKategori]
+GO
+
+ALTER TABLE [dbo].[MacBilgisi]  WITH CHECK ADD  CONSTRAINT [fk_MacBilgisiTakimlar1] FOREIGN KEY([EvSahibiTakimId])
+REFERENCES [dbo].[Takimlar] ([Id])
+GO
+
+ALTER TABLE [dbo].[MacBilgisi] CHECK CONSTRAINT [fk_MacBilgisiTakimlar1]
+GO
+
+ALTER TABLE [dbo].[MacBilgisi]  WITH CHECK ADD  CONSTRAINT [fk_MacBilgisiTakimlar2] FOREIGN KEY([DeplasmanTakimId])
+REFERENCES [dbo].[Takimlar] ([Id])
+GO
+
+ALTER TABLE [dbo].[MacBilgisi] CHECK CONSTRAINT [fk_MacBilgisiTakimlar2]
+GO
+
+
+/////////////////////////
+
+
+
+USE [OrduIhkDb]
+GO
+
+/****** Object:  Table [dbo].[Klasman]    Script Date: 6/18/2019 10:39:53 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Klasman](
+	[Id] [int] NOT NULL,
+	[Ad] [nvarchar](50) NOT NULL,
+	[Kod] [nvarchar](50) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+
+
+

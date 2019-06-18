@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="OrduIhkDbModelStoreContainer" CdmEntityContainer="OrduIhkDbEntities">
+    <EntitySetMapping Name="Gozlemcis">
+      <EntityTypeMapping TypeName="OrduIhkDbModel.Gozlemci">
+        <MappingFragment StoreEntitySet="Gozlemci">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="SoyAd" ColumnName="SoyAd" />
+          <ScalarProperty Name="LisansNo" ColumnName="LisansNo" />
+          <ScalarProperty Name="KlasmanId" ColumnName="KlasmanId" />
+          <ScalarProperty Name="VizeDurumuId" ColumnName="VizeDurumuId" />
+          <ScalarProperty Name="VizeDurumu" ColumnName="VizeDurumu" />
+          <ScalarProperty Name="KlasmanAdi" ColumnName="KlasmanAdi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GozlemciKlasmen">
+      <EntityTypeMapping TypeName="OrduIhkDbModel.GozlemciKlasman">
+        <MappingFragment StoreEntitySet="GozlemciKlasman">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Kod" ColumnName="Kod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hakems">
+      <EntityTypeMapping TypeName="OrduIhkDbModel.Hakem">
+        <MappingFragment StoreEntitySet="Hakem">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="SoyAd" ColumnName="SoyAd" />
+          <ScalarProperty Name="LisansNo" ColumnName="LisansNo" />
+          <ScalarProperty Name="KlasmanId" ColumnName="KlasmanId" />
+          <ScalarProperty Name="VizeDurumuId" ColumnName="VizeDurumuId" />
+          <ScalarProperty Name="KlasmanAdi" ColumnName="KlasmanAdi" />
+          <ScalarProperty Name="VizeDurumu" ColumnName="VizeDurumu" />
+          <ScalarProperty Name="AdSoyAd" ColumnName="AdSoyAd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HakemCezas">
+      <EntityTypeMapping TypeName="OrduIhkDbModel.HakemCeza">
+        <MappingFragment StoreEntitySet="HakemCeza">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="HakemId" ColumnName="HakemId" />
+          <ScalarProperty Name="CezaBaslangicTarihi" ColumnName="CezaBaslangicTarihi" />
+          <ScalarProperty Name="CezaBitisTarihi" ColumnName="CezaBitisTarihi" />
+          <ScalarProperty Name="CezaBaslangicHafta" ColumnName="CezaBaslangicHafta" />
+          <ScalarProperty Name="CezaBitisHafta" ColumnName="CezaBitisHafta" />
+          <ScalarProperty Name="HakemAd" ColumnName="HakemAd" />
+          <ScalarProperty Name="HakemSoyAd" ColumnName="HakemSoyAd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Klasmen">
+      <EntityTypeMapping TypeName="OrduIhkDbModel.Klasman">
+        <MappingFragment StoreEntitySet="Klasman">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Kod" ColumnName="Kod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MacBilgisis">
+      <EntityTypeMapping TypeName="OrduIhkDbModel.MacBilgisi">
+        <MappingFragment StoreEntitySet="MacBilgisi">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EvSahibiTakimId" ColumnName="EvSahibiTakimId" />
+          <ScalarProperty Name="DeplasmanTakimId" ColumnName="DeplasmanTakimId" />
+          <ScalarProperty Name="OrtaHakemId" ColumnName="OrtaHakemId" />
+          <ScalarProperty Name="BirinciYardimciHakemId" ColumnName="BirinciYardimciHakemId" />
+          <ScalarProperty Name="IkinciYardimciHakemId" ColumnName="IkinciYardimciHakemId" />
+          <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+          <ScalarProperty Name="Hafta" ColumnName="Hafta" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+          <ScalarProperty Name="OrtaHakemAd" ColumnName="OrtaHakemAd" />
+          <ScalarProperty Name="BirinciYardimciHakemAd" ColumnName="BirinciYardimciHakemAd" />
+          <ScalarProperty Name="IkinciYardimciHakemAd" ColumnName="IkinciYardimciHakemAd" />
+          <ScalarProperty Name="DorduncuHakemId" ColumnName="DorduncuHakemId" />
+          <ScalarProperty Name="DorduncuHakemAd" ColumnName="DorduncuHakemAd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TakimKategoris">
+      <EntityTypeMapping TypeName="OrduIhkDbModel.TakimKategori">
+        <MappingFragment StoreEntitySet="TakimKategori">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Kodu" ColumnName="Kodu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Takimlars">
+      <EntityTypeMapping TypeName="OrduIhkDbModel.Takimlar">
+        <MappingFragment StoreEntitySet="Takimlar">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VizeDurumus">
+      <EntityTypeMapping TypeName="OrduIhkDbModel.VizeDurumu">
+        <MappingFragment StoreEntitySet="VizeDurumu">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

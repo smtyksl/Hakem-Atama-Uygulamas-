@@ -1,0 +1,17 @@
+c:\users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\bin\Debug\OrduAtama.exe.config
+c:\users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\bin\Debug\OrduAtama.exe
+c:\users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\bin\Debug\OrduAtama.pdb
+c:\users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\obj\Debug\OrduAtama.csprojResolveAssemblyReference.cache
+c:\users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\obj\Debug\OrduAtama.Form1.resources
+c:\users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\obj\Debug\OrduAtama.Properties.Resources.resources
+c:\users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\obj\Debug\OrduAtama.csproj.GenerateResource.Cache
+c:\users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\obj\Debug\OrduAtama.exe
+c:\users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\obj\Debug\OrduAtama.pdb
+c:\users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\bin\Debug\EntityFramework.dll
+c:\users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\bin\Debug\EntityFramework.xml
+c:\users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\obj\Debug\OrduAtama.FrmHakemBilgiGuncelle.resources
+C:\Users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\obj\Debug\OrduAtama.FrmGozlemciBilgiDuzenleme.resources
+C:\Users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\obj\Debug\OrduAtama.FrmHakemCezaGirisi.resources
+C:\Users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\obj\Debug\OrduAtama.FrmTakimGuncelle.resources

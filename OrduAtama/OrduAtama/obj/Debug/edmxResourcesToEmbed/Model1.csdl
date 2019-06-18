@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OrduIhkDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Gozlemci">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SoyAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LisansNo" Type="Int32" />
+    <Property Name="KlasmanId" Type="Int32" Nullable="false" />
+    <Property Name="VizeDurumuId" Type="Int32" Nullable="false" />
+    <Property Name="VizeDurumu" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="KlasmanAdi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="GozlemciKlasman" Relationship="Self.FK_Gozlemci_GozlemciKlasman" FromRole="Gozlemci" ToRole="GozlemciKlasman" />
+    <NavigationProperty Name="VizeDurumu1" Relationship="Self.FK_Gozlemci_GozlemciVizeDurumu" FromRole="Gozlemci" ToRole="VizeDurumu" />
+  </EntityType>
+  <EntityType Name="GozlemciKlasman">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Kod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Gozlemcis" Relationship="Self.FK_Gozlemci_GozlemciKlasman" FromRole="GozlemciKlasman" ToRole="Gozlemci" />
+  </EntityType>
+  <EntityType Name="Hakem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SoyAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LisansNo" Type="Int32" />
+    <Property Name="KlasmanId" Type="Int32" Nullable="false" />
+    <Property Name="VizeDurumuId" Type="Int32" Nullable="false" />
+    <Property Name="KlasmanAdi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="VizeDurumu" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="AdSoyAd" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="HakemCezas" Relationship="Self.FK_HakemCezaHakem" FromRole="Hakem" ToRole="HakemCeza" />
+    <NavigationProperty Name="Klasman" Relationship="Self.fk_HakemKlasman" FromRole="Hakem" ToRole="Klasman" />
+    <NavigationProperty Name="VizeDurumu1" Relationship="Self.fk_HakemVizeDurumu" FromRole="Hakem" ToRole="VizeDurumu" />
+    <NavigationProperty Name="MacBilgisis" Relationship="Self.fk_MacBilgisiHakem1" FromRole="Hakem" ToRole="MacBilgisi" />
+    <NavigationProperty Name="MacBilgisis1" Relationship="Self.fk_MacBilgisiHakem2" FromRole="Hakem" ToRole="MacBilgisi" />
+    <NavigationProperty Name="MacBilgisis2" Relationship="Self.fk_MacBilgisiHakem3" FromRole="Hakem" ToRole="MacBilgisi" />
+    <NavigationProperty Name="MacBilgisis3" Relationship="Self.FK_MacBilgisiHakem4" FromRole="Hakem" ToRole="MacBilgisi" />
+  </EntityType>
+  <EntityType Name="HakemCeza">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HakemId" Type="Int32" Nullable="false" />
+    <Property Name="CezaBaslangicTarihi" Type="DateTime" Precision="3" />
+    <Property Name="CezaBitisTarihi" Type="DateTime" Precision="3" />
+    <Property Name="CezaBaslangicHafta" Type="Int32" />
+    <Property Name="CezaBitisHafta" Type="Int32" />
+    <Property Name="HakemAd" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="HakemSoyAd" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Hakem" Relationship="Self.FK_HakemCezaHakem" FromRole="HakemCeza" ToRole="Hakem" />
+  </EntityType>
+  <EntityType Name="Klasman">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Kod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Hakems" Relationship="Self.fk_HakemKlasman" FromRole="Klasman" ToRole="Hakem" />
+  </EntityType>
+  <EntityType Name="MacBilgisi">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EvSahibiTakimId" Type="Int32" Nullable="false" />
+    <Property Name="DeplasmanTakimId" Type="Int32" Nullable="false" />
+    <Property Name="OrtaHakemId" Type="Int32" Nullable="false" />
+    <Property Name="BirinciYardimciHakemId" Type="Int32" />
+    <Property Name="IkinciYardimciHakemId" Type="Int32" />
+    <Property Name="KategoriId" Type="Int32" Nullable="false" />
+    <Property Name="Hafta" Type="Int32" Nullable="false" />
+    <Property Name="Tarih" Type="DateTime" Precision="0" />
+    <Property Name="OrtaHakemAd" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="BirinciYardimciHakemAd" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IkinciYardimciHakemAd" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="DorduncuHakemId" Type="Int32" />
+    <Property Name="DorduncuHakemAd" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Hakem" Relationship="Self.fk_MacBilgisiHakem1" FromRole="MacBilgisi" ToRole="Hakem" />
+    <NavigationProperty Name="Hakem1" Relationship="Self.fk_MacBilgisiHakem2" FromRole="MacBilgisi" ToRole="Hakem" />
+    <NavigationProperty Name="Hakem2" Relationship="Self.fk_MacBilgisiHakem3" FromRole="MacBilgisi" ToRole="Hakem" />
+    <NavigationProperty Name="Hakem3" Relationship="Self.FK_MacBilgisiHakem4" FromRole="MacBilgisi" ToRole="Hakem" />
+    <NavigationProperty Name="MacBilgisi1" Relationship="Self.FK_MacBilgisi_MacBilgisi" FromRole="MacBilgisi" ToRole="MacBilgisi1" />
+    <NavigationProperty Name="MacBilgisi2" Relationship="Self.FK_MacBilgisi_MacBilgisi" FromRole="MacBilgisi1" ToRole="MacBilgisi" />
+    <NavigationProperty Name="TakimKategori" Relationship="Self.fk_MacBilgisiKategori" FromRole="MacBilgisi" ToRole="TakimKategori" />
+    <NavigationProperty Name="Takimlar" Relationship="Self.fk_MacBilgisiTakimlar1" FromRole="MacBilgisi" ToRole="Takimlar" />
+    <NavigationProperty Name="Takimlar1" Relationship="Self.fk_MacBilgisiTakimlar2" FromRole="MacBilgisi" ToRole="Takimlar" />
+  </EntityType>
+  <EntityType Name="TakimKategori">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ad" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Kodu" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="MacBilgisis" Relationship="Self.fk_MacBilgisiKategori" FromRole="TakimKategori" ToRole="MacBilgisi" />
+  </EntityType>
+  <EntityType Name="Takimlar">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ad" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="MacBilgisis" Relationship="Self.fk_MacBilgisiTakimlar1" FromRole="Takimlar" ToRole="MacBilgisi" />
+    <NavigationProperty Name="MacBilgisis1" Relationship="Self.fk_MacBilgisiTakimlar2" FromRole="Takimlar" ToRole="MacBilgisi" />
+  </EntityType>
+  <EntityType Name="VizeDurumu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Gozlemcis" Relationship="Self.FK_Gozlemci_GozlemciVizeDurumu" FromRole="VizeDurumu" ToRole="Gozlemci" />
+    <NavigationProperty Name="Hakems" Relationship="Self.fk_HakemVizeDurumu" FromRole="VizeDurumu" ToRole="Hakem" />
+  </EntityType>
+  <Association Name="FK_Gozlemci_GozlemciKlasman">
+    <End Role="GozlemciKlasman" Type="Self.GozlemciKlasman" Multiplicity="1" />
+    <End Role="Gozlemci" Type="Self.Gozlemci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GozlemciKlasman">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Gozlemci">
+        <PropertyRef Name="KlasmanId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Gozlemci_GozlemciVizeDurumu">
+    <End Role="VizeDurumu" Type="Self.VizeDurumu" Multiplicity="1" />
+    <End Role="Gozlemci" Type="Self.Gozlemci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VizeDurumu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Gozlemci">
+        <PropertyRef Name="VizeDurumuId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HakemCezaHakem">
+    <End Role="Hakem" Type="Self.Hakem" Multiplicity="1" />
+    <End Role="HakemCeza" Type="Self.HakemCeza" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hakem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HakemCeza">
+        <PropertyRef Name="HakemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_HakemKlasman">
+    <End Role="Klasman" Type="Self.Klasman" Multiplicity="1" />
+    <End Role="Hakem" Type="Self.Hakem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Klasman">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Hakem">
+        <PropertyRef Name="KlasmanId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_HakemVizeDurumu">
+    <End Role="VizeDurumu" Type="Self.VizeDurumu" Multiplicity="1" />
+    <End Role="Hakem" Type="Self.Hakem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VizeDurumu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Hakem">
+        <PropertyRef Name="VizeDurumuId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_MacBilgisiHakem1">
+    <End Role="Hakem" Type="Self.Hakem" Multiplicity="1" />
+    <End Role="MacBilgisi" Type="Self.MacBilgisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hakem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MacBilgisi">
+        <PropertyRef Name="OrtaHakemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_MacBilgisiHakem2">
+    <End Role="Hakem" Type="Self.Hakem" Multiplicity="0..1" />
+    <End Role="MacBilgisi" Type="Self.MacBilgisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hakem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MacBilgisi">
+        <PropertyRef Name="BirinciYardimciHakemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_MacBilgisiHakem3">
+    <End Role="Hakem" Type="Self.Hakem" Multiplicity="0..1" />
+    <End Role="MacBilgisi" Type="Self.MacBilgisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hakem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MacBilgisi">
+        <PropertyRef Name="IkinciYardimciHakemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MacBilgisiHakem4">
+    <End Role="Hakem" Type="Self.Hakem" Multiplicity="0..1" />
+    <End Role="MacBilgisi" Type="Self.MacBilgisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hakem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MacBilgisi">
+        <PropertyRef Name="DorduncuHakemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MacBilgisi_MacBilgisi">
+    <End Role="MacBilgisi" Type="Self.MacBilgisi" Multiplicity="1" />
+    <End Role="MacBilgisi1" Type="Self.MacBilgisi" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="MacBilgisi">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MacBilgisi1">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_MacBilgisiKategori">
+    <End Role="TakimKategori" Type="Self.TakimKategori" Multiplicity="1" />
+    <End Role="MacBilgisi" Type="Self.MacBilgisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TakimKategori">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MacBilgisi">
+        <PropertyRef Name="KategoriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_MacBilgisiTakimlar1">
+    <End Role="Takimlar" Type="Self.Takimlar" Multiplicity="1" />
+    <End Role="MacBilgisi" Type="Self.MacBilgisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Takimlar">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MacBilgisi">
+        <PropertyRef Name="EvSahibiTakimId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_MacBilgisiTakimlar2">
+    <End Role="Takimlar" Type="Self.Takimlar" Multiplicity="1" />
+    <End Role="MacBilgisi" Type="Self.MacBilgisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Takimlar">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MacBilgisi">
+        <PropertyRef Name="DeplasmanTakimId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="OrduIhkDbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Gozlemcis" EntityType="Self.Gozlemci" />
+    <EntitySet Name="GozlemciKlasmen" EntityType="Self.GozlemciKlasman" />
+    <EntitySet Name="Hakems" EntityType="Self.Hakem" />
+    <EntitySet Name="HakemCezas" EntityType="Self.HakemCeza" />
+    <EntitySet Name="Klasmen" EntityType="Self.Klasman" />
+    <EntitySet Name="MacBilgisis" EntityType="Self.MacBilgisi" />
+    <EntitySet Name="TakimKategoris" EntityType="Self.TakimKategori" />
+    <EntitySet Name="Takimlars" EntityType="Self.Takimlar" />
+    <EntitySet Name="VizeDurumus" EntityType="Self.VizeDurumu" />
+    <AssociationSet Name="FK_Gozlemci_GozlemciKlasman" Association="Self.FK_Gozlemci_GozlemciKlasman">
+      <End Role="GozlemciKlasman" EntitySet="GozlemciKlasmen" />
+      <End Role="Gozlemci" EntitySet="Gozlemcis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Gozlemci_GozlemciVizeDurumu" Association="Self.FK_Gozlemci_GozlemciVizeDurumu">
+      <End Role="VizeDurumu" EntitySet="VizeDurumus" />
+      <End Role="Gozlemci" EntitySet="Gozlemcis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HakemCezaHakem" Association="Self.FK_HakemCezaHakem">
+      <End Role="Hakem" EntitySet="Hakems" />
+      <End Role="HakemCeza" EntitySet="HakemCezas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_HakemKlasman" Association="Self.fk_HakemKlasman">
+      <End Role="Klasman" EntitySet="Klasmen" />
+      <End Role="Hakem" EntitySet="Hakems" />
+    </AssociationSet>
+    <AssociationSet Name="fk_HakemVizeDurumu" Association="Self.fk_HakemVizeDurumu">
+      <End Role="VizeDurumu" EntitySet="VizeDurumus" />
+      <End Role="Hakem" EntitySet="Hakems" />
+    </AssociationSet>
+    <AssociationSet Name="fk_MacBilgisiHakem1" Association="Self.fk_MacBilgisiHakem1">
+      <End Role="Hakem" EntitySet="Hakems" />
+      <End Role="MacBilgisi" EntitySet="MacBilgisis" />
+    </AssociationSet>
+    <AssociationSet Name="fk_MacBilgisiHakem2" Association="Self.fk_MacBilgisiHakem2">
+      <End Role="Hakem" EntitySet="Hakems" />
+      <End Role="MacBilgisi" EntitySet="MacBilgisis" />
+    </AssociationSet>
+    <AssociationSet Name="fk_MacBilgisiHakem3" Association="Self.fk_MacBilgisiHakem3">
+      <End Role="Hakem" EntitySet="Hakems" />
+      <End Role="MacBilgisi" EntitySet="MacBilgisis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MacBilgisiHakem4" Association="Self.FK_MacBilgisiHakem4">
+      <End Role="Hakem" EntitySet="Hakems" />
+      <End Role="MacBilgisi" EntitySet="MacBilgisis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MacBilgisi_MacBilgisi" Association="Self.FK_MacBilgisi_MacBilgisi">
+      <End Role="MacBilgisi" EntitySet="MacBilgisis" />
+      <End Role="MacBilgisi1" EntitySet="MacBilgisis" />
+    </AssociationSet>
+    <AssociationSet Name="fk_MacBilgisiKategori" Association="Self.fk_MacBilgisiKategori">
+      <End Role="TakimKategori" EntitySet="TakimKategoris" />
+      <End Role="MacBilgisi" EntitySet="MacBilgisis" />
+    </AssociationSet>
+    <AssociationSet Name="fk_MacBilgisiTakimlar1" Association="Self.fk_MacBilgisiTakimlar1">
+      <End Role="Takimlar" EntitySet="Takimlars" />
+      <End Role="MacBilgisi" EntitySet="MacBilgisis" />
+    </AssociationSet>
+    <AssociationSet Name="fk_MacBilgisiTakimlar2" Association="Self.fk_MacBilgisiTakimlar2">
+      <End Role="Takimlar" EntitySet="Takimlars" />
+      <End Role="MacBilgisi" EntitySet="MacBilgisis" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

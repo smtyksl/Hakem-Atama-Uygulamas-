@@ -1,0 +1,16 @@
+C:\Users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\bin\Release\OrduAtama.exe.config
+C:\Users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\bin\Release\OrduAtama.exe
+C:\Users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\bin\Release\OrduAtama.pdb
+C:\Users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\bin\Release\EntityFramework.dll
+C:\Users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\bin\Release\EntityFramework.xml
+C:\Users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\obj\Release\OrduAtama.Form1.resources
+C:\Users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\obj\Release\OrduAtama.FrmGozlemciBilgiDuzenleme.resources
+C:\Users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\obj\Release\OrduAtama.FrmHakemBilgiGuncelle.resources
+C:\Users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\obj\Release\OrduAtama.FrmHakemCezaGirisi.resources
+C:\Users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\obj\Release\OrduAtama.FrmTakimGuncelle.resources
+C:\Users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\obj\Release\OrduAtama.Properties.Resources.resources
+C:\Users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\obj\Release\OrduAtama.csproj.GenerateResource.Cache
+C:\Users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\obj\Release\OrduAtama.exe
+C:\Users\samet\documents\visual studio 2012\Projects\OrduAtama\OrduAtama\obj\Release\OrduAtama.pdb
